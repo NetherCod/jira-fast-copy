@@ -1,0 +1,141 @@
+/**
+ * Jira Fast Copy - Popup Styles
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-size: 14px;
+  color: #172b4d;
+  background: #fff;
+}
+
+.popup-container {
+  width: 240px;
+  padding: 16px;
+}
+
+/* Header */
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dfe1e6;
+}
+
+.popup-icon {
+  color: #0052cc;
+  flex-shrink: 0;
+}
+
+.popup-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #172b4d;
+}
+
+/* Content */
+.popup-content {
+  margin-bottom: 12px;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-label {
+  font-weight: 500;
+  color: #42526e;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #dfe1e6;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+.toggle-slider::before {
+  position: absolute;
+  content: '';
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #0052cc;
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* Footer */
+.popup-footer {
+  padding-top: 8px;
+  border-top: 1px solid #dfe1e6;
+}
+
+.popup-hint {
+  font-size: 11px;
+  color: #6b778c;
+  text-align: center;
+}
+
+/* Footer Info */
+.footer-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 10px;
+  color: #6b778c;
+}
+
+.footer-info a {
+  color: #0052cc;
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
+}
+
+.footer-info .separator {
+  opacity: 0.5;
+}
