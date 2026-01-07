@@ -1,0 +1,108 @@
+/**
+ * Jira Fast Copy - Content Styles
+ */
+
+/* Copy 按鈕基本樣式 */
+.jira-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  margin-right: 4px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #626f86;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  vertical-align: middle;
+}
+
+.jira-copy-btn:hover {
+  background: rgba(9, 30, 66, 0.08);
+  color: #172b4d;
+}
+
+.jira-copy-btn:focus {
+  outline: none;
+}
+
+.jira-copy-btn:active {
+  background: rgba(9, 30, 66, 0.13);
+}
+
+/* 複製成功狀態 */
+.jira-copy-btn.copied {
+  color: #22a06b;
+}
+
+.jira-copy-btn.copied .copy-icon {
+  display: none;
+}
+
+.jira-copy-btn.copied .check-icon {
+  display: block;
+}
+
+.jira-copy-btn .check-icon {
+  display: none;
+}
+
+/* 複製失敗狀態 */
+.jira-copy-btn.failed {
+  color: #cf3e3e;
+}
+
+/* Tooltip 樣式 */
+.jira-copy-btn::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: #172b4d;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  border-radius: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Tooltip 箭頭 */
+.jira-copy-btn::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #172b4d;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.jira-copy-btn:hover::before,
+.jira-copy-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* SVG icon 樣式 */
+.jira-copy-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
