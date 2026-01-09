@@ -57,12 +57,8 @@
 }
 
 /* Tooltip 樣式 */
-.jira-copy-btn::before {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
+.jira-copy-tooltip {
+  position: fixed;
   padding: 4px 8px;
   background: #172b4d;
   color: #fff;
@@ -78,24 +74,7 @@
   z-index: 9999;
 }
 
-/* Tooltip 箭頭 */
-.jira-copy-btn::after {
-  content: '';
-  position: absolute;
-  bottom: calc(100% + 2px);
-  left: 50%;
-  transform: translateX(-50%);
-  border: 4px solid transparent;
-  border-top-color: #172b4d;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.15s ease, visibility 0.15s ease;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-.jira-copy-btn:hover::before,
-.jira-copy-btn:hover::after {
+.jira-copy-tooltip.visible {
   opacity: 1;
   visibility: visible;
 }

@@ -7,10 +7,51 @@ const CONTAINER_SELECTOR =
   '[data-testid="issue.views.issue-base.foundation.breadcrumbs.breadcrumb-current-issue-container"]';
 const ISSUE_KEY_SELECTOR = '[data-testid="issue.views.issue-base.foundation.breadcrumbs.current-issue.item"]';
 const BUTTON_ID = 'jira-copy-extension-btn';
+const TOOLTIP_ID = 'jira-copy-extension-tooltip';
 
 /**
  * 建立 copy 按鈕元素
  */
+/**
+ * 建立或取得 tooltip 元素（固定在 body 層級避免 z-index 問題）
+ */
+function getOrCreateTooltip() {
+  let tooltip = document.getElementById(TOOLTIP_ID);
+  if (!tooltip) {
+    tooltip = document.createElement('div');
+    tooltip.id = TOOLTIP_ID;
+    tooltip.className = 'jira-copy-tooltip';
+    document.body.appendChild(tooltip);
+  }
+  return tooltip;
+}
+
+/**
+ * 顯示 tooltip
+ */
+function showTooltip(button, text) {
+  const tooltip = getOrCreateTooltip();
+  tooltip.textContent = text;
+  tooltip.classList.add('visible');
+
+  // 計算 tooltip 位置
+  const rect = button.getBoundingClientRect();
+  const tooltipRect = tooltip.getBoundingClientRect();
+
+  tooltip.style.left = `${rect.left + rect.width / 2 - tooltipRect.width / 2}px`;
+  tooltip.style.top = `${rect.top - tooltipRect.height - 8}px`;
+}
+
+/**
+ * 隱藏 tooltip
+ */
+function hideTooltip() {
+  const tooltip = document.getElementById(TOOLTIP_ID);
+  if (tooltip) {
+    tooltip.classList.remove('visible');
+  }
+}
+
 function createCopyButton(issueKey) {
   const button = document.createElement('button');
   button.id = BUTTON_ID;
@@ -28,6 +69,15 @@ function createCopyButton(issueKey) {
       <polyline points="20 6 9 17 4 12"></polyline>
     </svg>
   `;
+
+  // Tooltip hover 事件
+  button.addEventListener('mouseenter', () => {
+    showTooltip(button, button.getAttribute('data-tooltip'));
+  });
+
+  button.addEventListener('mouseleave', () => {
+    hideTooltip();
+  });
 
   button.addEventListener('click', async (e) => {
     e.preventDefault();
@@ -53,9 +103,13 @@ function showCopyFeedback(button, success) {
   button.setAttribute('data-tooltip', success ? 'Copied!' : 'Failed');
   button.classList.add(success ? 'copied' : 'failed');
 
+  // 更新目前顯示的 tooltip
+  showTooltip(button, success ? 'Copied!' : 'Failed');
+
   setTimeout(() => {
     button.setAttribute('data-tooltip', originalTooltip);
     button.classList.remove('copied', 'failed');
+    hideTooltip();
   }, 1000);
 }
 
