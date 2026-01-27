@@ -58,6 +58,7 @@ function createCopyButton(issueKey) {
   button.className = 'jira-copy-btn';
   button.setAttribute('aria-label', `Copy ${issueKey}`);
   button.setAttribute('data-tooltip', `Copy ${issueKey}`);
+  button.dataset.issueKey = issueKey;
 
   // SVG copy icon + check icon
   button.innerHTML = `
@@ -117,11 +118,6 @@ function showCopyFeedback(button, success) {
  * 注入 copy 按鈕到 Jira 頁面
  */
 function injectCopyButton() {
-  // 檢查是否已經注入
-  if (document.getElementById(BUTTON_ID)) {
-    return;
-  }
-
   const container = document.querySelector(CONTAINER_SELECTOR);
   const issueKeyLink = document.querySelector(ISSUE_KEY_SELECTOR);
 
@@ -132,6 +128,17 @@ function injectCopyButton() {
   const issueKey = issueKeyLink.textContent.trim();
   if (!issueKey) {
     return;
+  }
+
+  // 檢查是否已經注入
+  const existingButton = document.getElementById(BUTTON_ID);
+  if (existingButton) {
+    // 如果已經存在且 issue key 相同，則不需要重新注入
+    if (existingButton.dataset.issueKey === issueKey) {
+      return;
+    }
+    // 如果 issue key 不同 (SPA page transition)，移除舊按鈕
+    existingButton.remove();
   }
 
   const button = createCopyButton(issueKey);
@@ -180,9 +187,17 @@ async function init() {
 
   // 使用 MutationObserver 監聽 DOM 變化（處理 SPA 導航）
   const observer = new MutationObserver((mutations) => {
-    if (!document.getElementById(BUTTON_ID)) {
-      injectCopyButton();
+    // 先檢查是否真的需要注入，減少 injectCopyButton 呼叫次數
+    const button = document.getElementById(BUTTON_ID);
+    if (button) {
+      const issueKeyLink = document.querySelector(ISSUE_KEY_SELECTOR);
+      // 如果按鈕存在且 issue key 一致，則不做任何事
+      if (issueKeyLink && button.dataset.issueKey === issueKeyLink.textContent.trim()) {
+        return;
+      }
     }
+
+    injectCopyButton();
   });
 
   observer.observe(document.body, {

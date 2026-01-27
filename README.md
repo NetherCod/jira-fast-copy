@@ -1,6 +1,6 @@
 # Jira Fast Copy
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-v1.0.1-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/jira-fast-copy/lommnhjknhlmmlpmdmmfejionhjijfpd)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-v1.0.2-blue?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/jira-fast-copy/lommnhjknhlmmlpmdmmfejionhjijfpd)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A Chrome extension for one-click copying of Jira Issue Keys to clipboard.

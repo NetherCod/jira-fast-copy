@@ -1,50 +1,46 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jira Fast Copy</title>
-    <link rel="stylesheet" href="popup.css" />
-  </head>
-  <body>
-    <div class="popup-container">
-      <div class="popup-header">
-        <svg
-          class="popup-icon"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-        </svg>
-        <h1 class="popup-title">Jira Fast Copy</h1>
-      </div>
 
-      <div class="popup-content">
-        <div class="toggle-row">
-          <span class="toggle-label">Enable Copy Button</span>
-          <label class="toggle-switch">
-            <input type="checkbox" id="enableToggle" />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jira Fast Copy</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
 
-      <div class="popup-footer">
-        <p class="popup-hint">Toggle will refresh the page</p>
-        <div class="footer-info">
-          <span class="version">v1.0.1</span>
-          <span class="separator">•</span>
-          <a href="https://github.com/NetherCod/jira-fast-copy" target="_blank" rel="noopener">GitHub</a>
-          <span class="separator">•</span>
-          <span class="author">by Raymond</span>
-        </div>
+<body>
+  <div class="popup-container">
+    <div class="popup-header">
+      <svg class="popup-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      <h1 class="popup-title">Jira Fast Copy</h1>
+    </div>
+
+    <div class="popup-content">
+      <div class="toggle-row">
+        <span class="toggle-label">Enable Copy Button</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="enableToggle" />
+          <span class="toggle-slider"></span>
+        </label>
       </div>
     </div>
-    <script src="popup.js"></script>
-  </body>
+
+    <div class="popup-footer">
+      <p class="popup-hint">Toggle will refresh the page</p>
+      <div class="footer-info">
+        <span class="version">v1.0.2</span>
+        <span class="separator">•</span>
+        <a href="https://github.com/NetherCod/jira-fast-copy" target="_blank" rel="noopener">GitHub</a>
+        <span class="separator">•</span>
+        <span class="author">by NetherCod</span>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
 </html>

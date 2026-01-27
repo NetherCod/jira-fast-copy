@@ -2,6 +2,12 @@
 
 All notable changes to Jira Fast Copy will be documented in this file.
 
+## [1.0.2] - 2026-01-27
+
+### Fixed
+
+- Fixed an issue where the copy button and copy status persisted from the previous issue during SPA navigation without a hard reload.
+
 ## [1.0.1] - 2026-01-09
 
 ### Fixed
